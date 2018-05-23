@@ -5,38 +5,33 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Sistema de Trocas</title>
+        <title>Cadastrar Produto</title>
         <style type="text/css" rel="stylesheet">
             body {
                 text-align: center;
             }
-
             form {
                 text-align: center;
                 margin: auto;
             }
-
         </style>
     </h:head>
     <h:body>
 
-        <h1>Sistema de Trocas</h1>
         <h:form>
-            <th>
-                <a href="cadastroUsuarios.xhtml">Cadastrar-se</a>
-            </th>
+
             <p:column>
-                <p>E-mail</p>
-                <h:inputText value="#{usuariosMBean.emailLogin}"></h:inputText>
+                <p>Item</p>
+                <h:inputText value="#{produtosMBean.item}"></h:inputText>
             </p:column>
             <p:column>
-                <p>Senha</p>
-                <h:inputSecret value="#{usuariosMBean.senhaLogin}"></h:inputSecret>
+                <p>Categoria</p>
+                <h:inputText value="#{produtosMBean.categoria}"></h:inputText>
             </p:column>
             <br />
             <br />
-            <h:commandButton action="#{usuariosMBean.login()}" value="Entrar" />
-            
+            <h:commandButton action ="#{produtosMBean.cadastraProduto(usuariosMBean.id)}"  value="OK" />
+
         </h:form>
     </h:body>
 </html>

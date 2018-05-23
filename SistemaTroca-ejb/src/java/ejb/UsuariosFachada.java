@@ -28,6 +28,11 @@ public class UsuariosFachada {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+    public int getMaxId() {
+        Query query = em.createNamedQuery("Usuarios.findMaxId");
+        return Integer.parseInt(query.getResultList().get(0).toString());
+    }
+    
     public void cadastraUsuario(Usuarios usuario) {
         this.persist(usuario);
     }
