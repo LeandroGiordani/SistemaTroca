@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Pagina do Usuario</title>
+        <style type="text/css" rel="stylesheet">
+            body {
+                text-align: center;
+            }
+            form {
+                text-align: center;
+                margin: auto;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        
+        <h1>Sistema de Trocas</h1>
+        <p><a href="cadastroProduto.xhtml">Cadastrar Produto</a></p>
+        <div>
+            
+            <f:view>
+                <h:form>
+                    <h2><h:outputText value="Lista de Produtos"/></h2>
+                    <p>Filtrar Por Categoria:</p>
+                      <h:selectOneMenu value="#{vagaMBean.area}" >
+                           <f:selectItem itemValue = "materialEsportivo" itemLabel = "Materiais Esportivos" /> 
+                           <f:selectItem itemValue = "livros" itemLabel = "Livros" /> 
+                           <f:selectItem itemValue = "informatica" itemLabel = "Informatica" />
+                           <f:selectItem itemValue = "eletrodomestico" itemLabel = "Eletrodomestico" />
+                           <f:selectItem itemValue = "eletroeletronico" itemLabel = "Eletroeletronico" />
+                           <f:selectItem itemValue = "vestuario" itemLabel = "Vestuario" />
+                       </h:selectOneMenu>
+                    <h:commandButton action="#{produtosMBean.buscar()}" value="Buscar" />
+                    <p:dataTable var="produto" value="#{produtosMBean.buscar()}">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{produto.id}" />
+                        </p:column>
+                        <p:column headerText="Item">
+                            <h:outputText value="#{produto.item}" /> 
+                        </p:column>
+                        <p:column headerText="Categoria">
+                            <h:outputText value="#{produto.categoria}" />
+                        </p:column>
+                        <p:column headerText="Id Usuario">
+                            <h:outputText value="#{produto.idusuario}" />
+                        </p:column>
+                        <p:column headerText="Contato">
+                            <h:commandButton action="#{usuariosMBean.contata(produto.idusuario)}" value="Contatar" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </f:view>
+        </div>
+    </h:body>
+</html>
+
