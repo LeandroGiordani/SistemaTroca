@@ -25,6 +25,7 @@ public class UsuariosMBean implements Serializable {
     
     private static Usuarios usuario;
     
+    private int id;
     private String nome;
     private String telefone;    
     private String email;
@@ -48,8 +49,13 @@ public class UsuariosMBean implements Serializable {
         if (usuario == null) {
             return null;
         } else {
+            this.id = usuario.getId();
             return "/main";
         }
+    }
+    
+    public int getIdLogin() {
+        return this.id;
     }
 
     public void setEmailLogin(String email) {
