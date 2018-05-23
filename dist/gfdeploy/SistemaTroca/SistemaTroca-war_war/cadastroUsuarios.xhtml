@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Cadastrar Produto</title>
+        <title>Cadastrar Usuario</title>
         <style type="text/css" rel="stylesheet">
             body {
                 text-align: center;
@@ -21,16 +21,24 @@
         <h:form>
 
             <p:column>
-                <p>Item</p>
-                <h:inputText value="#{produtosMBean.itemCadastro}"></h:inputText>
+                <p>Nome</p>
+                <h:inputText value="#{usuariosMBean.nome}"></h:inputText>
             </p:column>
             <p:column>
-                <p>Categoria</p>
-                <h:inputText value="#{produtosMBean.categoriaCadastro}"></h:inputText>
+                <p>Telefone</p>
+                <h:inputText value="#{usuariosMBean.telefone}"></h:inputText>
+            </p:column>
+            <p:column>
+                <p>Email</p>
+                <h:inputText value="#{usuariosMBean.email}"></h:inputText>
+            </p:column>
+            <p:column>
+                <p>Senha</p>
+                <h:inputSecret value="#{usuariosMBean.senha}"></h:inputSecret>
             </p:column>
             <br />
             <br />
-            <h:commandButton action ="#{produtosMBean.cadastraProduto(usuariosMBean.idLogin)}"  value="OK" />
+            <h:commandButton action ="#{usuariosMBean.cadastraUsuario()}"  value="OK" />
 
         </h:form>
     </h:body>

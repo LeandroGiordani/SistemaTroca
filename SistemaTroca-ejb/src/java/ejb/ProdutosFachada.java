@@ -29,6 +29,12 @@ public class ProdutosFachada {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+    
+    public int getMaxId() {
+        Query query = em.createNamedQuery("Produtos.findMaxId");
+        return Integer.parseInt(query.getResultList().get(0).toString());
+    }
+    
     public List<ejb.Produtos> getListaProdutos() {
         Query query = em.createNamedQuery("Produtos.findAll");
         return query.getResultList();
@@ -38,5 +44,9 @@ public class ProdutosFachada {
         Query query = em.createNamedQuery("Produtos.findByCategoria");
         query.setParameter("categoria", categoria);
         return query.getResultList();
+    }
+
+    void cadastraProduto(Produtos produto) {
+        em.persist(produto);
     }
 }

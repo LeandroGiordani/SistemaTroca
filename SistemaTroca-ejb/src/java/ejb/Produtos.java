@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Produtos.findAll", query = "SELECT p FROM Produtos p")
+    , @NamedQuery(name = "Produtos.findMaxId", query = "SELECT MAX(p.id) FROM Produtos p")
     , @NamedQuery(name = "Produtos.findById", query = "SELECT p FROM Produtos p WHERE p.id = :id")
     , @NamedQuery(name = "Produtos.findByItem", query = "SELECT p FROM Produtos p WHERE p.item = :item")
     , @NamedQuery(name = "Produtos.findByCategoria", query = "SELECT p FROM Produtos p WHERE p.categoria = :categoria")
