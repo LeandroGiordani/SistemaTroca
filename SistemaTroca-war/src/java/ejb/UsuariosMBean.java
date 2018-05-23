@@ -9,13 +9,15 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
 /**
  *
  * @author giordani
  */
+@ManagedBean
 @Named(value = "usuariosMBean")
-@RequestScoped
+@SessionScoped
 public class UsuariosMBean implements Serializable {
 
     @EJB
@@ -25,6 +27,8 @@ public class UsuariosMBean implements Serializable {
     
     private String email;
     private String senha;
+    
+    private String[] contato;
 
     /**
      * Creates a new instance of UsuariosMBean
@@ -37,7 +41,7 @@ public class UsuariosMBean implements Serializable {
         if (usuario == null) {
             return null;
         } else {
-            return "/usuario";
+            return "/main";
         }
     }
 
@@ -57,6 +61,11 @@ public class UsuariosMBean implements Serializable {
         return senha;
     }
     
-    
+    public String contata(int idusuario) {
+        Usuarios contatoUsuario = usuariosFachada.contata(idusuario);
+        this.contato = new String[]{contatoUsuario.getNome(), 
+            contatoUsuario.getTelefone(), contatoUsuario.getEmail()};
+        return "/contato";
+    }
     
 }

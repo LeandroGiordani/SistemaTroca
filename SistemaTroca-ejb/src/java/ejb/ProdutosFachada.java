@@ -33,4 +33,10 @@ public class ProdutosFachada {
         Query query = em.createNamedQuery("Produtos.findAll");
         return query.getResultList();
     }
+    
+    public List<ejb.Produtos> getListaProdutosPorCategoria(String categoria) {
+        Query query = em.createNamedQuery("Produtos.findByCategoria");
+        query.setParameter("categoria", categoria);
+        return query.getResultList();
+    }
 }

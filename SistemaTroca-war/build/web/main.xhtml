@@ -26,16 +26,17 @@
                 <h:form>
                     <h2><h:outputText value="Lista de Produtos"/></h2>
                     <p>Filtrar Por Categoria:</p>
-                      <h:selectOneMenu value="#{vagaMBean.area}" >
+                      <h:selectOneMenu value="#{produtosMBean.categoria}" >
                            <f:selectItem itemValue = "materialEsportivo" itemLabel = "Materiais Esportivos" /> 
                            <f:selectItem itemValue = "livros" itemLabel = "Livros" /> 
                            <f:selectItem itemValue = "informatica" itemLabel = "Informatica" />
                            <f:selectItem itemValue = "eletrodomestico" itemLabel = "Eletrodomestico" />
                            <f:selectItem itemValue = "eletroeletronico" itemLabel = "Eletroeletronico" />
                            <f:selectItem itemValue = "vestuario" itemLabel = "Vestuario" />
+                           <f:selectItem itemValue = "celulares" itemLabel = "Celulares" />
                        </h:selectOneMenu>
-                    <h:commandButton action="#{produtosMBean.buscar()}" value="Buscar" />
-                    <p:dataTable var="produto" value="#{produtosMBean.buscar()}">
+                    <h:commandButton action="#{produtosMBean.buscar(produtosMBean.categoria)}" value="Buscar" />
+                    <p:dataTable var="produto" value="#{produtosMBean.listaProdutos}">
                         <p:column headerText="Id">
                             <h:outputText value="#{produto.id}" />
                         </p:column>

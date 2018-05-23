@@ -44,4 +44,17 @@ public class UsuariosFachada {
         }
         return null;
     }
+    
+    public Usuarios contata(int idusuario) {
+        Query query = em.createNamedQuery("Usuarios.findById");
+        query.setParameter("id", idusuario);
+        try {
+            Usuarios usuario = (Usuarios) query.getSingleResult();
+            if (usuario.getId() == idusuario) {
+                return usuario;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
 }
