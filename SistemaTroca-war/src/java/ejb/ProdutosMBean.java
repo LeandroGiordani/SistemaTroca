@@ -42,7 +42,10 @@ public class ProdutosMBean implements Serializable{
         return produtosFachada.getListaProdutos();
     }
 
-    public List<Produtos> buscar(String categoria) {
+    public List<Produtos> getListaProdutos(String categoria) {
+        if (categoria == null || categoria.isEmpty()) {
+            return getListaProdutos();
+        }
         return produtosFachada.getListaProdutosPorCategoria(categoria);
     }
 
@@ -82,7 +85,8 @@ public class ProdutosMBean implements Serializable{
         int id = produtosFachada.getMaxId() + 1;
         Produtos cadastraProduto = new Produtos(id);
         String itemCadastrado = this.getItemCadastro();
-        String categoriaCadastrada = this.getCategoria();
+        String categoriaCadastrada = this.getCategoriaCadastro();
+        setIdUsuario(idusuario);
         int idusuarioCadastro = this.getIdUsuario();
         if (itemCadastrado != null && categoriaCadastrada != null 
                 && idusuarioCadastro != 0) {

@@ -54,6 +54,12 @@ public class UsuariosMBean implements Serializable {
         }
     }
     
+    public String logout() {
+        this.emailLogin = null;
+        this.senhaLogin = null;
+        return "/logout";
+    }
+    
     public int getIdLogin() {
         return this.id;
     }
@@ -156,6 +162,10 @@ public class UsuariosMBean implements Serializable {
         }
         
         return "/index";
+    }
+    
+    public String getUsuario(int id) {
+        return usuariosFachada.getUsuario(id);
     }
     
 }

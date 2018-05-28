@@ -46,7 +46,7 @@ public class ProdutosFachada {
         return query.getResultList();
     }
 
-    void cadastraProduto(Produtos produto) {
+    public void cadastraProduto(Produtos produto) {
         em.persist(produto);
     }
 }

@@ -17,42 +17,38 @@
         </style>
     </h:head>
     <h:body>
-        
+
         <h1>Sistema de Trocas</h1>
         <p><a href="cadastraProduto.xhtml">Cadastrar Produto</a></p>
         <div>
-            
+
             <f:view>
                 <h:form>
                     <h2><h:outputText value="Lista de Produtos"/></h2>
                     <p>Filtrar Por Categoria:</p>
-                      <h:selectOneMenu value="#{produtosMBean.categoria}" >
-                           <f:selectItem itemValue = "materialEsportivo" itemLabel = "Materiais Esportivos" /> 
-                           <f:selectItem itemValue = "livros" itemLabel = "Livros" /> 
-                           <f:selectItem itemValue = "informatica" itemLabel = "Informatica" />
-                           <f:selectItem itemValue = "eletrodomestico" itemLabel = "Eletrodomestico" />
-                           <f:selectItem itemValue = "eletroeletronico" itemLabel = "Eletroeletronico" />
-                           <f:selectItem itemValue = "vestuario" itemLabel = "Vestuario" />
-                           <f:selectItem itemValue = "celulares" itemLabel = "Celulares" />
-                       </h:selectOneMenu>
-                    <h:commandButton action="#{produtosMBean.buscar(produtosMBean.categoria)}" value="Buscar" />
-                    <p:dataTable var="produto" value="#{produtosMBean.listaProdutos}">
-                        <p:column headerText="Id">
-                            <h:outputText value="#{produto.id}" />
-                        </p:column>
+                    <h:selectOneMenu value="#{produtosMBean.categoria}" >
+                        <f:selectItem itemValue = "" itemLabel= "Todos" />
+                        <f:selectItem itemValue = "materiaisEsportivos" itemLabel = "Materiais Esportivos" /> 
+                        <f:selectItem itemValue = "livros" itemLabel = "Livros" /> 
+                        <f:selectItem itemValue = "informatica" itemLabel = "Informatica" />
+                        <f:selectItem itemValue = "eletrodomestico" itemLabel = "Eletrodomestico" />
+                        <f:selectItem itemValue = "eletroeletronico" itemLabel = "Eletroeletronico" />
+                        <f:selectItem itemValue = "vestuario" itemLabel = "Vestuario" />
+                        <f:selectItem itemValue = "celulares" itemLabel = "Celulares" />
+                    </h:selectOneMenu>
+                    <h:commandButton action="#{produtosMBean.getListaProdutos(produtosMBean.getCategoria())}" value="Buscar" />
+                    <p:dataTable var="produto" value="#{produtosMBean.getListaProdutos(produtosMBean.getCategoria())}">
                         <p:column headerText="Item">
                             <h:outputText value="#{produto.item}" /> 
                         </p:column>
-                        <p:column headerText="Categoria">
-                            <h:outputText value="#{produto.categoria}" />
-                        </p:column>
-                        <p:column headerText="Id Usuario">
-                            <h:outputText value="#{produto.idusuario}" />
+                        <p:column headerText="Proprietario">
+                            <h:outputText value="#{usuariosMBean.getUsuario(produto.idusuario)}" />
                         </p:column>
                         <p:column headerText="Contato">
                             <h:commandButton action="#{usuariosMBean.contata(produto.idusuario)}" value="Contatar" />
                         </p:column>
                     </p:dataTable>
+                    <h:commandButton action="#{usuariosMBean.logout()}" value="Sair" />
                 </h:form>
             </f:view>
         </div>

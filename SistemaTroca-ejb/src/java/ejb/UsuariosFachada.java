@@ -62,4 +62,11 @@ public class UsuariosFachada {
         }
         return null;
     }
+
+    public String getUsuario(int id) {
+        Query query = em.createNamedQuery("Usuarios.findById");
+        query.setParameter("id", id);
+        Usuarios usuario = (Usuarios) query.getSingleResult();
+        return usuario.getNome();
+    }
 }
